@@ -9,10 +9,6 @@
 /////////////////////////////define_key/////////////////////////////////
 #define key_up 72
 #define key_down 80
-#define f1 59
-#define f2 60
-#define f3 61
-#define f4 62
 #define esc 27
 #define Enter 13
 
@@ -743,7 +739,8 @@ void Thong_ke_top_sach(dsDauSach ds){
 		thongKe[i] = 0;
 	}
 	
-	/// thong ke so sach duoc muon
+	
+	/// thong ke so sach duoc muon. Doan nay cac ban cho duyen danh sach the doc gia roi ghi lai tan xuat muon theo moi dau sach.
 	for(int i = 0; i < ds.n; i++){
 		dsDMS p = ds.dsDS[i]->dms;
 		
@@ -869,9 +866,9 @@ void tim_kiem_sach_TenSach(dsDauSach ds){
 }
 
 void Quan_ly_sach(dsDauSach ds){
-	resizeConsole(2000,1000);
+//	resizeConsole(2000,1000);
 	
-//	docFile(ds);
+	docFile(ds);
 	int x =  10, y = 5;
 	Sap_xep_dau_sach(ds);	
 	
@@ -879,7 +876,7 @@ void Quan_ly_sach(dsDauSach ds){
 	while(true){
 		count = lua_chon - lua_chon%10;
 		system("cls"); 
-		
+		SetColor(white);
 		gotoxy(50, 1); cout << "|DANH SACH DAU SACH CUA THU VIEN|";
 		
 		SetColor(text_title_color); SetBGColor(15-text_title_color);
@@ -931,6 +928,7 @@ void Quan_ly_sach(dsDauSach ds){
 		SetColor(white);
 		
 		for(int i = 0; i < 10; i ++ ){
+			if(ds.dsDS[i] == NULL) break;
 			if(lua_chon == count+i) {
 				
 				xoa_console(x-1, y+i, 104, 1);
@@ -1027,6 +1025,7 @@ void Quan_ly_sach(dsDauSach ds){
 			break;
 		}
 	}
+	ghiFile(ds);
 }
 
 int Cap_nhat_trang_thai_sach(dsDauSach &ds, int masach, int trangthai){

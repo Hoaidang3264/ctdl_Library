@@ -114,16 +114,16 @@ void deleteConsole(int x, int y, int lengh){
 
 
 void nhapS(string &s, int x, int y){
-	string error = "Nhap khong hop le!";
+//	string error = "Nhap khong hop le!";
 	while(true){
 		gotoxy(x, y);
 		getline(cin,s);
 		if(checkString(s) == true) break;
 		else {
 			xoaConsoleS(x,y,s);
-			gotoxy(x + 6,y);
-			cout << error << endl;
-			getch(); xoaConsoleS(x + 6,y,error);
+//			gotoxy(x + 6,y);
+////			cout << error << endl;
+//			getch(); xoaConsoleS(x + 6,y,error);
 		}
 	}
 	
